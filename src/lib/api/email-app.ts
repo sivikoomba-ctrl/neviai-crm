@@ -3,6 +3,7 @@ import axios from "axios";
 const emailApi = axios.create({
   baseURL: process.env.EMAIL_APP_URL || "http://localhost:3001",
   timeout: 10000,
+  headers: { "x-neviai-proxy": process.env.PROXY_SECRET ?? "" },
 });
 
 export async function getEmailsForContact(contactId: string) {
